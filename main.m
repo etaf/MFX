@@ -14,7 +14,7 @@ ETAF_RMZERO = false;
 global ETAF_FS;
 ETAF_FS = 16000;
 global  ETAF_MULTIPLE_THREAD;
-ETAF_MULTIPLE_THREAD = false;
+ETAF_MULTIPLE_THREAD = true;
 
 %% args process
 if nargin == 1

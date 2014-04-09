@@ -21,7 +21,7 @@ for p = 1:test_people_num
 
     dist_sum =0;
     
-    for i=1:n
+    parfor i=1:n
         dist = test_unit([test_pep_dir,num2str(i),'.wav'],feature_mat{i},etaf_debug,etaf_rmzero,etaf_fs );
         score = get_score(dist);
         dist_sum = dist_sum + dist;

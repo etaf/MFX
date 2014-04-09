@@ -1,5 +1,5 @@
 function dist = test_unit( waveFile,feature_origin,etaf_debug,etaf_rmzero,etaf_fs )
-%µ¥¾ä
+%ï¿½ï¿½ï¿½ï¿½
 [y,fs,nbits] = wavread(waveFile);
 if(etaf_debug)
     fprintf('fs = %d nbits=%d\n',fs,nbits);
