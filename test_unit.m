@@ -19,15 +19,13 @@ end
 if(length(y)<256)
     dist =Inf;
 else
-    feature =  feature_extract(y,fs);
+   feature =  feature_extract(y,fs);
 %     dist = get_dist(feature_origin,feature);
-    dist = dtw(feature_origin,feature);
-    dist = dist/size(feature_origin,1);
+%     dist = dtw(feature_origin,feature);
+    dist = get_dist(feature_origin,feature);
+    
 end
 
-if(etaf_debug)
-    fprintf('%dth sentence origin_frame_num = %d; test_frame_num=%d\n',i,size(feature_mat{i},1),size(feature,1));
-end
 
 end
 

@@ -12,6 +12,7 @@ ns=size(s,1);
 nt=size(t,1);
 
 
+
 %% initialization
 D=zeros(ns+1,nt+1)+Inf; % cache matrix
 D(1,1)=0;

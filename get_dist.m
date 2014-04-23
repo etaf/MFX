@@ -1,26 +1,18 @@
-function dist = get_dist(feature_origin,feature)
-    [n,~] = size(feature_origin);
-    [m,~] = size(feature);
+function dist = get_dist( s,t )
 
-    
-    nm = max(n,m);
-    if(m<n)
-        feature = etaf_extend(feature,nm);
-    end
-    if(m>n)
-        feature_origin = etaf_extend(feature_origin,nm);
-    end
-    
-    [n,~] = size(feature_origin);
-    [m,~] = size(feature);
-    
-    if(n ~= m)
-        fprintf('|origin:%d |test:%d |\n',n,m);
-    end
-    
-    dist = 0;
-    for i=1:nm
-        dist = dist + sum( (feature_origin(i,:)-feature(i,:)).^2 );
-    end
-    dist = dist/nm;
+ns = size(s,1);
+nt = size(t,1);
+if ns ~= nt
+    fprintf('+-------------------+\n');
+    fprintf('| ns=%04d | nt=%04d |\n',ns,nt);
+    fprintf('+-------------------+\n');
 end
+
+
+dist = direct_dist(s,t);
+%     dist = get_extend_dist(s,t);
+%     dist = dtw(s,t);
+% dist = dist/size(s,1);
+dist = dist/ns;
+end
+
