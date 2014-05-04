@@ -1,5 +1,14 @@
 function test( test_dir,feature_mat,song_name )
 
+
+if ~isempty(str2num(song_name)) %num to song_name
+    if ~exist('songname')
+        load  songidmap.mat;
+    end
+    song_name = songname(str2num(song_name));
+end
+
+
 global ETAF_DEBUG;
 etaf_debug = ETAF_DEBUG;
 global ETAF_RMZERO;

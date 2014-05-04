@@ -4,7 +4,7 @@ function [ x ] = remove_zero( y )
 j=1;
 x = 0;
 for i=1:length(y)
-    if(y(i)>1e-4/2)
+    if(y(i)>1e-12)
         x(j) = y(i);
         j=j+1;
     end

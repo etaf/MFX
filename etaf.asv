@@ -1,0 +1,5 @@
+function  etaf()
+
+plot(melbankm1(24,256,16000,)')
+end
+

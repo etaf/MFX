@@ -9,10 +9,12 @@ if ns ~= nt
 end
 
 
-dist = direct_dist(s,t);
+% dist = direct_dist(s,t);
 %     dist = get_extend_dist(s,t);
-%     dist = dtw(s,t);
-% dist = dist/size(s,1);
+dist = dtw(s,t);
+
+
+
 dist = dist/ns;
 end
 

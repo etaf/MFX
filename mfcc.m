@@ -35,9 +35,9 @@ for i=1:nf
 %     j=j+1;
 %     continue;
 %   end
-  if y(:) == 0
+  if y(:) < 1E-4
       y(:) = 1E-20;
-      fprintf('0-frame!\n');
+%       fprintf('0-frame!\n');
   end
   
   s = y' .* hamming(frameSize);
@@ -45,6 +45,7 @@ for i=1:nf
   t = t.^2;
   c1=dctcoef * log(bank * t(1:1+floor(frameSize/2)));
   c2 = c1.*w';
+% c2 = c1;
   if size(m,2) ~= size(c2,1)
     fprintf('size of m = %dx%d \t size of c2 = %d\n',size(m,1),size(m,2),size(c2,1));
   end

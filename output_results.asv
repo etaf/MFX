@@ -1,0 +1,35 @@
+function  output_results( song_name,results )
+
+if ~isempty(str2num(song_name))
+    if ~exist('songname')
+        load 
+    end
+end
+fprintf('######## %s: sorted result:########\n',song_name);
+[etaf_ans,pos] = sort([results.avg_dist],'ascend');
+[~,n] = size(results);
+for i=1:n
+    fprintf('%d:\t%s\tscore=%.2f\tdist=%.2f\n',i,results(pos(i)).name,results(pos(i)).final_score,results(pos(i)).avg_dist);
+end
+
+% fprintf('======================== test end ========================\n');
+
+%%
+fp = fopen('report.txt','a+');
+now_time = [num2str(hour(now)),':',num2str(minute(now)),' ',num2str(year(now)),'-',num2str(month(now)),'-',num2str(day(now))];
+
+fprintf(fp,'======================== test begin ========================\n');
+
+fprintf(fp,'test_report at %s\n',now_time);
+fprintf(fp,'%s: sorted result:\n',song_name);
+
+for i=1:n
+    fprintf(fp,'%d:\t%s\tscore=%.2f\tdist=%.2f\n',i,results(pos(i)).name,results(pos(i)).final_score,results(pos(i)).avg_dist);
+end
+
+fprintf(fp,'======================== test end ========================\n\n\n');
+
+fclose(fp);
+
+end
+
