@@ -11,10 +11,12 @@ end
 
 % dist = direct_dist(s,t);
 %     dist = get_extend_dist(s,t);
-dist = dtw(s,t);
+% dist = dtw(s,t);
 
 
 
-dist = dist/ns;
+% dist = dist/ns;
+
+dist = lr_dist(s,t);
 end
 

@@ -1,15 +1,11 @@
-function  output_results( song_name,results )
+function  output_results( song_name,results ,plot_opt )
 
-if ~isempty(str2num(song_name))
-    if ~exist('songname')
-        load 
-    end
-end
+
 fprintf('######## %s: sorted result:########\n',song_name);
-[etaf_ans,pos] = sort([results.avg_dist],'ascend');
+[sorted_dist,pos] = sort([results.avg_dist],'ascend')
 [~,n] = size(results);
 for i=1:n
-    fprintf('%d:\t%s\tscore=%.2f\tdist=%.2f\n',i,results(pos(i)).name,results(pos(i)).final_score,results(pos(i)).avg_dist);
+    fprintf('%d\t%s\tscore=%.2f\tdist=%.2f\n',i,results(pos(i)).name,results(pos(i)).final_score,results(pos(i)).avg_dist);
 end
 
 % fprintf('======================== test end ========================\n');
@@ -24,12 +20,27 @@ fprintf(fp,'test_report at %s\n',now_time);
 fprintf(fp,'%s: sorted result:\n',song_name);
 
 for i=1:n
-    fprintf(fp,'%d:\t%s\tscore=%.2f\tdist=%.2f\n',i,results(pos(i)).name,results(pos(i)).final_score,results(pos(i)).avg_dist);
+    fprintf(fp,'%d\t%s\tscore=%.2f\tdist=%.2f\n',i,results(pos(i)).name,results(pos(i)).final_score,results(pos(i)).avg_dist);
 end
 
 fprintf(fp,'======================== test end ========================\n\n\n');
 
 fclose(fp);
+%%
+
+
+if plot_opt == true
+    plot_testers(sorted_dist);
+end
 
 end
 
+function plot_testers(sorted_dist)
+    x =1:length(sorted_dist);
+    plot(x,sorted_dist,'--rs','LineWidth',2,...
+        'MarkerEdgeColor','g',...
+        'MarkerFaceColor','g',...
+        'MarkerSize',8);
+    axis([0,30,0,3000]);
+    xlim()
+end
