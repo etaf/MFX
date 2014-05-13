@@ -18,6 +18,7 @@ global  ETAF_MULTIPLE_THREAD;
 ETAF_MULTIPLE_THREAD = true;
 global ETAF_SENTENCE_PLOT;
 ETAF_SENTENCE_PLOT = false;
+%%%dfsaf
 %% args process
 if nargin == 1
     song_name_list = {song_name};
