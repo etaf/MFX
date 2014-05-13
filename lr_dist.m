@@ -4,7 +4,7 @@ ns = size(s,1);
 nt = size(t,1);
 
 dist = 0;
-limit_l = 1;
+limit_l = 0;
 limit_r = 2;
 for i=1:nt 
     min_dist = inf;

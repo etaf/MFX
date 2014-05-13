@@ -13,8 +13,6 @@ end
 %     dist = get_extend_dist(s,t);
 % dist = dtw(s,t);
 
-
-
 % dist = dist/ns;
 
 dist = lr_dist(s,t);
