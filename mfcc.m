@@ -10,7 +10,7 @@ x = enframe(y,frameSize,overLap);
 %%
 [nf,frameSize] = size(x);
 filter_num = 24; %三角滤波器个数
-coef_num = 12; %阶数
+coef_num = 16; %阶数
 
 
 % mel滤波器组系数
@@ -35,10 +35,10 @@ for i=1:nf
 %     j=j+1;
 %     continue;
 %   end
-  if y(:) < 1E-4
-      y(:) = 1E-20;
-%       fprintf('0-frame!\n');
-  end
+%   if y(:) < 1E-10
+%       y(:) = 1E-20;
+% %       fprintf('0-frame!\n');
+%   end
   
   s = y' .* hamming(frameSize);
   t = abs(fft(s));

@@ -48,13 +48,12 @@ for p = 1:test_people_num
     
     dist_sum =0;
     scores = zeros(n,1);
-    highest_score = 0;
+
     for i=1:n
         dist = test_unit([test_pep_dir,num2str(i),'.wav'],feature_mat{i},etaf_debug,etaf_rmzero,etaf_fs );
         dist_sum = dist_sum + dist;
         score = get_score(dist,dist_seg,seg_num,cof_ab);
         scores(i) = score;
-        highest_score = max(highest_score,score);
         if(ETAF_SENTENCE)
             fprintf('%s %s %dth sentence: score=%.2f dist=%.2f\n',song_name,ps(p+2).name,i,score,dist)
         end
@@ -62,8 +61,11 @@ for p = 1:test_people_num
     
 
     avg_dist = dist_sum / n;
+    scores = sort(scores,'descend');
+    topn = min(3,n);
+    highest_score = sum(scores(1:topn))/topn;
     final_score = get_score(avg_dist,dist_seg,seg_num,cof_ab);
-    
+    final_score = final_score*0.9 + highest_score*0.1;
     results(p) = struct('name',ps(p+2).name,'final_score',final_score,'avg_dist',avg_dist,'highest_score',highest_score);;
     
       
