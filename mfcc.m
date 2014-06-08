@@ -30,15 +30,6 @@ m= zeros(nf,coef_num);
 j=1;
 for i=1:nf
   y = x(i,:);
-%   if y(:)==0
-%     m(j,:)=0;
-%     j=j+1;
-%     continue;
-%   end
-%   if y(:) < 1E-10
-%       y(:) = 1E-20;
-% %       fprintf('0-frame!\n');
-%   end
   
   s = y' .* hamming(frameSize);
   t = abs(fft(s));
