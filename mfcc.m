@@ -1,11 +1,12 @@
 function ccc = mfcc(y,fs)
 
-y=filter([1 -0.9375],1,y);
+% y=filter([1 -0.9375],1,y);
 frameTime = 15;
 frameSize = floor(fs*frameTime/1000);   %帧长
 overLap = floor(frameSize/3);           %帧重叠
-
-x = enframe(y,frameSize,overLap);
+frameSize = 256;
+overLap = 128;
+x = etaf_enframe(y,frameSize,overLap);
 
 %%
 [nf,frameSize] = size(x);
@@ -27,33 +28,26 @@ w = 1 + 6 * sin(pi * [1:coef_num] ./ coef_num);
 w = w/max(w);
 
 m= zeros(nf,coef_num);
-j=1;
 for i=1:nf
   y = x(i,:);
   
   s = y' .* hamming(frameSize);
+
   t = abs(fft(s));
   t = t.^2;
-  c1=dctcoef * log(bank * t(1:1+floor(frameSize/2)));
+  c1=dctcoef * log( max(bank * t(1:1+floor(frameSize/2)),1e-30) );
+%   c1 = log( max(bank * t(1:1+floor(frameSize/2)),1e-30) );
+%   c1 = rdct(c1);
   c2 = c1.*w';
-% c2 = c1;
+
   if size(m,2) ~= size(c2,1)
     fprintf('size of m = %dx%d \t size of c2 = %d\n',size(m,1),size(m,2),size(c2,1));
   end
-  m(j,:)=c2';
-  j = j+1;
+  m(i,:)=c2';
+
 end
 
-% for i=1:nfwe
-%   y = x(i,:);
-%   s = y' .* hamming(frameSize);
-%   t = abs(fft(s));
-%   t = t.^2;
-%   c1=dctcoef * log(bank * t(1:1+floor(frameSize/2)));
-%   c2 = c1.*w';
-%   m(i,:)=c2';
-% 
-% end
+
 
 %差分系数
 % dtm = zeros(size(m));
