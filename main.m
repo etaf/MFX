@@ -3,7 +3,6 @@ function main(song_name)
 close all;
 warning off
 
-% clear all;
 
 %% global setting
 global ETAF_DEBUG;

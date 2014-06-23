@@ -4,8 +4,8 @@ function ccc = mfcc(y,fs)
 frameTime = 15;
 frameSize = floor(fs*frameTime/1000);   %Ö¡³¤
 overLap = floor(frameSize/3);           %Ö¡ÖØµþ
-frameSize = 256;
-overLap = 128;
+% frameSize = 512;
+% overLap = 128;
 x = etaf_enframe(y,frameSize,overLap);
 
 %%
@@ -35,7 +35,7 @@ for i=1:nf
 
   t = abs(fft(s));
   t = t.^2;
-  c1=dctcoef * log( max(bank * t(1:1+floor(frameSize/2)),1e-30) );
+  c1=dctcoef * log(bank * t(2:2+floor(frameSize/2) ));
 %   c1 = log( max(bank * t(1:1+floor(frameSize/2)),1e-30) );
 %   c1 = rdct(c1);
   c2 = c1.*w';
