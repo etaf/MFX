@@ -3,5 +3,5 @@ function v = etaf_feature(y,fs)
     inc = 128;
     z = enframe(y,hamming(n),inc);
     f = fft(z.');
- 
+    
 end

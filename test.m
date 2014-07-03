@@ -64,8 +64,9 @@ for p = 1:test_people_num
     scores = sort(scores,'descend');
     topn = min(3,n);
     highest_score = sum(scores(1:topn))/topn;
+    
     final_score = get_score(avg_dist,dist_seg,seg_num,cof_ab);
-    final_score = final_score*0.9 + highest_score*0.1;
+%     final_score = final_score*0.9 + highest_score*0.1;
     results(p) = struct('name',ps(p+2).name,'final_score',final_score,'avg_dist',avg_dist,'highest_score',highest_score);;
     
       

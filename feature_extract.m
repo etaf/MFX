@@ -13,14 +13,13 @@ end
 
 % v = etaf_melcepst(y,fs,'Mp',12,24,256,128);
 % v = [v get_det(v)];
-v = mfcc(y,fs);
+% v = mfcc(y,fs);
 
 % [v,~,~] = melfcc(y,fs);
 % v= v';
 % v = [v get_det(v)];
 % v = v(3:size(v,1)-2,:);
-
-% v = etaf_feature(y,fs);
+v = etaf_feature(y,fs);
 
 end
 
